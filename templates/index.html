@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="grid-2">
+  <form class="card form" method="post" enctype="multipart/form-data">
+    <h2>Upload a leaf image</h2>
+    <p class="muted">Use a clear photo of a single leaf. Supported: JPG, PNG, BMP, WEBP (max 8 MB).</p>
+    <label class="drop">
+      <input type="file" name="leaf" accept=".jpg,.jpeg,.png,.bmp,.webp" required
+             onchange="previewLeaf(this)">
+      <img id="preview" alt="" hidden>
+      <span id="drop-text">Click to choose an image</span>
+    </label>
+    <button class="btn btn-primary" type="submit">Detect disease</button>
+  </form>
+
+  <div class="card">
+    <h2>Model</h2>
+    <table class="kv">
+      <tr><th>Backbone</th><td>{{ cfg.backbone }}</td></tr>
+      <tr><th>Input size</th><td>{{ cfg.input_size }} &times; {{ cfg.input_size }} px</td></tr>
+      <tr><th>Classes</th><td>{{ n_classes }}</td></tr>
+      <tr><th>Training budget</th><td>{{ cfg.budget }}</td></tr>
+      <tr><th>Test accuracy</th><td>{{ '%.2f' % (100 * cfg.test_acc) }} %</td></tr>
+      <tr><th>Test macro-F1</th><td>{{ '%.2f' % (100 * cfg.test_macro_f1) }} %</td></tr>
+    </table>
+    <p class="muted small">The model only knows the {{ n_classes }} PlantVillage classes. Photos of other
+      plants or non-leaf objects will still receive a label, so low-confidence results are flagged.</p>
+  </div>
+</section>
+<script>
+function previewLeaf(input) {
+  const img = document.getElementById('preview');
+  if (input.files && input.files[0]) {
+    img.src = URL.createObjectURL(input.files[0]);
+    img.hidden = false;
+    document.getElementById('drop-text').textContent = input.files[0].name;
+  }
+}
+</script>
+{% endblock %}

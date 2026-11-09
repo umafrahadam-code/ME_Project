@@ -1,0 +1,19 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-05
+Test case    : Generate a training budget
+Expected     : Only training IDs are sampled; counts are reproducible.
+Executed at  : 2026-11-06T01:19:43 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+B100  manifest rows=38105  expected=38105  non-training=0
+B20   manifest rows=7622   expected=7622   non-training=0
+B40   manifest rows=15240  expected=15240  non-training=0
+B60   manifest rows=22865  expected=22865  non-training=0
+B80   manifest rows=30483  expected=30483  non-training=0
+budget counts reproduce budget_summary.csv exactly
+
+RESULT: PASS  (0.6 s)

@@ -1,0 +1,18 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-02
+Test case    : Load a corrupt image file
+Expected     : File is rejected and logged without stopping the run.
+Executed at  : 2026-11-06T01:19:43 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+REJECTED corrupt_sample.jpg      logged -> UnidentifiedImageError: cannot identify image file 'C:\\Users\\welcome\\Downloads\\ME_Project\\tests\\tmp\\corrupt_sample.jpg'
+ACCEPTED 00075aa8-d81a-4184-8541- ok
+corrupt file present : corrupt_sample.jpg (212 bytes)
+rejected             : 1
+accepted after error : 1 (run did not stop)
+
+RESULT: PASS  (0.1 s)

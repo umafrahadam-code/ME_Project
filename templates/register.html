@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Register &middot; Plant Disease Detection{% endblock %}
+{% block content %}
+<section class="auth single">
+  <form class="card form" method="post" autocomplete="off">
+    <h2>Create account</h2>
+    <label>Full name <input type="text" name="name" required autofocus></label>
+    <label>Email <input type="email" name="email" required></label>
+    <label>Password <input type="password" name="password" minlength="6" required></label>
+    <label>Confirm password <input type="password" name="confirm" minlength="6" required></label>
+    <button class="btn btn-primary" type="submit">Register</button>
+    <p class="muted">Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+  </form>
+</section>
+{% endblock %}

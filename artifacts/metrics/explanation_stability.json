@@ -1,0 +1,21 @@
+{
+  "images": 380,
+  "per_class": 10,
+  "views": {
+    "horizontal_flip": {
+      "prediction_agreement": 0.9842,
+      "mean_pearson": 0.9465,
+      "mean_top20_iou": 0.723
+    },
+    "brightness_+15%": {
+      "prediction_agreement": 0.9947,
+      "mean_pearson": 0.9931,
+      "mean_top20_iou": 0.9114
+    },
+    "rotation_10deg": {
+      "prediction_agreement": 0.9184,
+      "mean_pearson": 0.8095,
+      "mean_top20_iou": 0.5965
+    }
+  }
+}

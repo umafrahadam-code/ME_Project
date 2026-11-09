@@ -1,0 +1,21 @@
+{
+  "input_size": 160,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "backbone": "MobileNetV3-Small",
+  "classes": 38,
+  "budget": "B40",
+  "seed": 42,
+  "pretrained": true,
+  "test_acc": 0.983,
+  "test_macro_f1": 0.9774,
+  "trained_at": "2026-11-06 20:28:24"
+}

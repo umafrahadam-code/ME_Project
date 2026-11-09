@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Report #{{ row.id }} &middot; Plant Disease Detection{% endblock %}
+{% block content %}
+<article class="card report">
+  <header class="report-head">
+    <div>
+      <h1>Plant Disease Detection Report</h1>
+      <p class="muted">Report No. {{ row.id }} &middot; {{ row.created_at }} &middot; User: {{ user_name }}</p>
+    </div>
+    <button class="btn btn-ghost noprint" onclick="window.print()">Print / Save PDF</button>
+  </header>
+
+  <table class="kv">
+    <tr><th>Image file</th><td>{{ row.orig_name }}</td></tr>
+    <tr><th>Crop</th><td>{{ crop }}</td></tr>
+    <tr><th>Condition</th><td><span class="tag {{ 'ok' if healthy else 'bad' }}">{{ cond }}</span></td></tr>
+    <tr><th>Confidence</th><td>{{ '%.2f' % (100 * row.confidence) }} %{% if low %} (low &ndash; verify){% endif %}</td></tr>
+    <tr><th>Model</th><td>{{ cfg.backbone }}, {{ n_classes }} classes, budget {{ cfg.budget }}</td></tr>
+    <tr><th>Processing time</th><td>{{ '%.0f' % row.latency_ms }} ms</td></tr>
+  </table>
+
+  <div class="grid-2 report-imgs">
+    <figure><img src="{{ url_for('static', filename='uploads/' + row.image_file) }}" alt="">
+      <figcaption>Input leaf</figcaption></figure>
+    <figure><img src="{{ url_for('static', filename='uploads/' + row.cam_file) }}" alt="">
+      <figcaption>Grad-CAM explanation</figcaption></figure>
+  </div>
+
+  <h2>Top-5 classes</h2>
+  <table class="table">
+    <thead><tr><th>Rank</th><th>Crop</th><th>Condition</th><th>Probability</th></tr></thead>
+    <tbody>
+    {% for t in top %}
+      <tr><td>{{ loop.index }}</td><td>{{ t.crop }}</td><td>{{ t.cond }}</td>
+          <td>{{ '%.2f' % (100 * t.score) }} %</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted small">This automated result is a preliminary screening aid. It does not replace
+    diagnosis by a qualified plant pathologist or agricultural extension officer.</p>
+</article>
+{% endblock %}

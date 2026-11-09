@@ -1,0 +1,17 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-06
+Test case    : Apply augmentation
+Expected     : Output shape is valid and source label is retained.
+Executed at  : 2026-11-06T01:19:43 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+source          : 00075aa8-d81a-4184-8541-b692b78d398a___FREC_Scab 3335.JPG (256, 256)
+crop / flip     : 256 resize -> 224 crop -> mirror
+output          : (224, 224) RGB, label retained = Apple___Apple_scab
+written to      : tests\tmp\augmented_sample.jpg
+
+RESULT: PASS  (0.0 s)

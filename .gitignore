@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Dataset (846 MB, download PlantVillage separately - see README)
+dataset/
+
+# Local runtime data: user accounts, password hashes, secret key, uploads
+instance/
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Large or duplicate model files (the app uses model_bundle/model.pt)
+artifacts/torch_cache/
+artifacts/checkpoints/
+
+# College sample report used only as a template for the front pages
+report_assets/front_pages_template.docx
+report_assets/front_pages.docx
+
+# Third-party paper, build outputs, editor files
+41598_2025_Article_94083.pdf
+PlantDiseaseApp.zip
+~$*
+.claude/

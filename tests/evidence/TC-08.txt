@@ -1,0 +1,18 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-08
+Test case    : Generate Grad-CAM
+Expected     : Heatmap is finite, correctly sized and linked to target class.
+Executed at  : 2026-11-06T01:19:49 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+model          : MobileNetV3-Small (offline: random weights (ValueError))
+hooked layer   : Conv2d  feature map (1, 576, 7, 7)
+target class   : 4 (predicted)  score=0.0000
+gradient stats : min=-4.73692e-05 max=5.38713e-05
+heatmap size   : (224, 224)  finite=True  min=0 max=6.173e-11
+
+RESULT: PASS  (0.2 s)

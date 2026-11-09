@@ -1,0 +1,17 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-03
+Test case    : Encounter an unknown class label
+Expected     : Validation reports the label and prevents silent mapping.
+Executed at  : 2026-11-06T01:19:43 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+label Apple___Apple_scab           -> accepted
+label Unknown___Not_A_Class        -> REPORTED: unknown label 'Unknown___Not_A_Class' (not in the 38 class folders)
+class folders found  : 38
+silent mapping       : prevented (unknown label raises a report)
+
+RESULT: PASS  (0.0 s)

@@ -1,0 +1,19 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-07
+Test case    : Run model inference
+Expected     : Output dimension equals the number of supported classes.
+Executed at  : 2026-11-06T01:19:43 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+model          : torchvision MobileNetV3-Small (offline: random weights (ValueError))
+input tensor   : (1, 3, 224, 224)  sample=Apple___Apple_scab/00075aa8-d81a-4184-8541-b692
+output tensor  : (1, 38)
+classes        : 38  (supported class count)
+finite outputs : True
+argmax         : class 4  p=0.0263
+
+RESULT: PASS  (6.0 s)

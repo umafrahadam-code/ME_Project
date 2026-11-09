@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Result &middot; Plant Disease Detection{% endblock %}
+{% block content %}
+<section class="card verdict {{ 'ok' if healthy else 'bad' }}">
+  <div>
+    <p class="eyebrow">Prediction</p>
+    <h1>{{ crop }} &ndash; {{ cond }}</h1>
+    <p>{% if healthy %}The leaf appears <strong>healthy</strong>.{% else %}Signs of
+       <strong>{{ cond }}</strong> detected on {{ crop }}.{% endif %}
+       Confidence <strong>{{ '%.2f' % (100 * row.confidence) }} %</strong>.</p>
+    {% if low %}
+    <p class="warn">Low confidence: the image may be unclear or outside the {{ n_classes }} supported
+       classes. Retake the photo or consult an expert.</p>
+    {% endif %}
+  </div>
+  <div class="actions">
+    <a class="btn btn-primary" href="{{ url_for('report', pid=row.id) }}">View report</a>
+    <a class="btn btn-ghost" href="{{ url_for('index') }}">New image</a>
+  </div>
+</section>
+
+<section class="grid-3">
+  <figure class="card">
+    <img src="{{ url_for('static', filename='uploads/' + row.image_file) }}" alt="Uploaded leaf">
+    <figcaption>Input ({{ row.orig_name }})</figcaption>
+  </figure>
+  <figure class="card">
+    <img src="{{ url_for('static', filename='uploads/' + row.cam_file) }}" alt="Grad-CAM heatmap">
+    <figcaption>Grad-CAM: red = regions that most influenced the prediction</figcaption>
+  </figure>
+  <div class="card">
+    <h2>Top-5 classes</h2>
+    {% for t in top %}
+    <div class="bar-row">
+      <div class="bar-label"><span>{{ loop.index }}. {{ t.crop }} &ndash; {{ t.cond }}</span>
+        <span>{{ '%.2f' % (100 * t.score) }}%</span></div>
+      <div class="bar"><div style="width: {{ '%.1f' % (100 * t.score) }}%"></div></div>
+    </div>
+    {% endfor %}
+    <p class="muted small">Inference + Grad-CAM time: {{ '%.0f' % row.latency_ms }} ms (CPU)</p>
+  </div>
+</section>
+{% endblock %}

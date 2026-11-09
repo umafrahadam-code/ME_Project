@@ -1,0 +1,19 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-04
+Test case    : Check partition overlap
+Expected     : No sample ID or duplicate group crosses partitions.
+Executed at  : 2026-11-06T01:19:43 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+samples in manifest  : 54305
+partition counts     : {'train': 38105, 'validation': 8150, 'test': 8050}
+sample IDs crossing partitions : 0
+duplicate groups audited        : 21 (all_duplicate_groups.json (full SHA-256 re-audit))
+duplicate groups crossing splits: 0
+duplicate files missing from manifest: 0
+
+RESULT: PASS  (0.1 s)

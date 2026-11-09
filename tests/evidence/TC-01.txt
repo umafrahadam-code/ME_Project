@@ -1,0 +1,16 @@
+TEST EXECUTION EVIDENCE
+=======================
+Test ID      : TC-01
+Test case    : Load a valid RGB image
+Expected     : Image decodes and returns expected dimensions.
+Executed at  : 2026-11-06T01:19:42 (run-20261106)
+Host         : Windows-11-10.0.22631-SP0 / Python 3.12.8
+Run by       : automated test harness (tests\run_tests.py)
+
+EXECUTION LOG
+-------------
+sample        : Apple___Apple_scab/00075aa8-d81a-4184-8541-b692b78d398a___FREC_Scab 3335.JPG
+path          : dataset\PlantVillage\raw\color\Apple___Apple_scab\00075aa8-d81a-4184-8541-b692b78d398a___FREC_Scab 3335.JPG
+decoded as    : JPEG RGB (256, 256)
+
+RESULT: PASS  (0.2 s)

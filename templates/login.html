@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login &middot; Plant Disease Detection{% endblock %}
+{% block content %}
+<section class="auth">
+  <div class="auth-intro">
+    <h1>Detect plant leaf diseases from a photo</h1>
+    <p>A lightweight deep learning model (MobileNetV3-Small) trained on the PlantVillage
+       dataset recognises {{ n_classes }} crop&ndash;disease classes and highlights the leaf
+       regions that drove its decision with Grad-CAM.</p>
+    <ul class="ticks">
+      <li>14 crops, 26 diseases and 12 healthy classes</li>
+      <li>Top-5 predictions with confidence</li>
+      <li>Grad-CAM explanation heatmap</li>
+      <li>Saved history and printable report</li>
+    </ul>
+  </div>
+  <form class="card form" method="post" autocomplete="on">
+    <h2>Login</h2>
+    <label>Email <input type="email" name="email" required autofocus></label>
+    <label>Password <input type="password" name="password" required></label>
+    <button class="btn btn-primary" type="submit">Login</button>
+    <p class="muted">New user? <a href="{{ url_for('register') }}">Create an account</a></p>
+  </form>
+</section>
+{% endblock %}

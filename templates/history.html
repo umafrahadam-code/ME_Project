@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}History &middot; Plant Disease Detection{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>Prediction history</h2>
+  {% if items %}
+  <table class="table">
+    <thead><tr><th>#</th><th>Image</th><th>Crop</th><th>Condition</th><th>Confidence</th>
+      <th>Date &amp; time</th><th></th></tr></thead>
+    <tbody>
+    {% for it in items %}
+      <tr>
+        <td>{{ it.row.id }}</td>
+        <td><img class="thumb" src="{{ url_for('static', filename='uploads/' + it.row.image_file) }}" alt=""></td>
+        <td>{{ it.crop }}</td>
+        <td><span class="tag {{ 'ok' if it.healthy else 'bad' }}">{{ it.cond }}</span></td>
+        <td>{{ '%.2f' % (100 * it.row.confidence) }} %</td>
+        <td>{{ it.row.created_at }}</td>
+        <td><a href="{{ url_for('result', pid=it.row.id) }}">Open</a> &middot;
+            <a href="{{ url_for('report', pid=it.row.id) }}">Report</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No predictions yet. <a href="{{ url_for('index') }}">Upload a leaf image</a>.</p>
+  {% endif %}
+</section>
+{% endblock %}

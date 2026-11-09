@@ -1,0 +1,9 @@
+test_id,test_case,execution_date,build,status,detail,evidence
+TC-01,Load a valid RGB image,2026-11-06,run-20261106,Pass,"decoded 1 image as RGB (256, 256)",tests\evidence\TC-01.txt
+TC-02,Load a corrupt image file,2026-11-06,run-20261106,Pass,"1 corrupt rejected, 1 valid loaded, run continued",tests\evidence\TC-02.txt
+TC-03,Encounter an unknown class label,2026-11-06,run-20261106,Pass,38 class folders known; unknown label reported,tests\evidence\TC-03.txt
+TC-04,Check partition overlap,2026-11-06,run-20261106,Pass,"54305 samples, 0 overlaps, 21 duplicate groups checked, 0 crossings",tests\evidence\TC-04.txt
+TC-05,Generate a training budget,2026-11-06,run-20261106,Pass,"B20..B100 counts match (B100=38105, B20=7622, B40=15240, B60=22865, B80=30483), all from train",tests\evidence\TC-05.txt
+TC-06,Apply augmentation,2026-11-06,run-20261106,Pass,"224x224 RGB output, label 'Apple___Apple_scab' retained",tests\evidence\TC-06.txt
+TC-07,Run model inference,2026-11-06,run-20261106,Pass,"output (1, 38), argmax=4 p=0.026",tests\evidence\TC-07.txt
+TC-08,Generate Grad-CAM,2026-11-06,run-20261106,Pass,"heatmap 224x224 for class 4, finite",tests\evidence\TC-08.txt
